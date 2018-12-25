@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  # allow devise to respond to and only to application/json request payloads
-  clear_respond_to
-  respond_to :json
+  # devise by default disallows some operations (sign up, login) if the user already has an active session.
+  # this line removes that default constraint
+  skip_before_action :require_no_authentication
 end

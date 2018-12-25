@@ -49,15 +49,21 @@ TODO. This step is probably the most difficult.
 
 ## Running tests
 
-Currently, both API tests and unit tests are stored in the `/spec` directory and can be executed by running `bundle exec rspec`. Tests use the RSpec framework.
-
-```
-ResumeBuilder (master) $ bundle exec rspec
-```
+Currently, both API tests and unit tests are stored in the `/spec` directory. Tests use the RSpec framework.
 
 Migrations can be executed on the test db by running:
 ```
 ResumeBuilder (master) $ rake db:migrate RAILS_ENV=test
+```
+
+Seed the test db:
+```
+rake db:seed RAILS_ENV=test
+```
+
+Finally, execute the tests:
+```
+ResumeBuilder (master) $ bundle exec rspec
 ```
 
 ### Troubleshooting

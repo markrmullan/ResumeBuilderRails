@@ -7,7 +7,7 @@ def user(email = Faker::Internet.email, password = Faker::String.random(9))
   }
 end
 
-RSpec.describe 'User registration API', type: :request do
+describe 'User registration API: POST /users', type: :request do
   it 'returns user data on success' do
     post('/users', params: {
            user: user
