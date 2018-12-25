@@ -61,6 +61,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
+    - 'db/schema.rb' # auto-generated code
   # Default formatter will be used if no `-f/--format` option is given.
   DefaultFormatter: progress
   # Cop names are displayed in offense messages by default. Change behavior
@@ -1629,7 +1630,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Description: 'Avoid long blocks with many lines.'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.44'
   VersionChanged: '0.58'
   CountComments: false  # count full line comments?
@@ -2705,7 +2706,7 @@ Style/BeginBlock:
 Style/BlockComments:
   Description: 'Do not use block comments.'
   StyleGuide: '#no-block-comments'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   VersionChanged: '0.23'
 

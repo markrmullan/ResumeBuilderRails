@@ -39,8 +39,6 @@ ResumeBuilder (master) $ bundle install --path vendor/bundle
 #### Set up MySQL
 TODO. This step is probably the most difficult.
 
-
-
 `rake db:create` to create databases
 
 `rake db:migrate` to run migrations
@@ -49,6 +47,18 @@ TODO. This step is probably the most difficult.
 
 `rubocop` to lint files, `rubocop -a` to auto-fix violations
 
+## Running tests
+
+Currently, both API tests and unit tests are stored in the `/spec` directory and can be executed by running `bundle exec rspec`. Tests use the RSpec framework.
+
+```
+ResumeBuilder (master) $ bundle exec rspec
+```
+
+Migrations can be executed on the test db by running:
+```
+ResumeBuilder (master) $ rake db:migrate RAILS_ENV=test
+```
 
 ### Troubleshooting
 I had a ton of trouble installing Ruby on Rails on Mac OS X El Capitan. Seems related to the [System Integrity Protection](https://support.apple.com/en-us/HT204899) feature that was introduced with that version of the OS.
