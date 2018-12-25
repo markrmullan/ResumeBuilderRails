@@ -4,7 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table(:users, :id => false) do |t|
       # uuid instead of id
-      t.string :uuid, :limit => 36, :primary => true
+      t.string :uuid, :limit => 36, primary_key: true, null: false
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
