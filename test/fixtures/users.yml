@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  uuid                   :string(36)       primary key
+#  uuid                   :string(36)       not null, primary key
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
