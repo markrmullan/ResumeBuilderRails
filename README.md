@@ -47,6 +47,8 @@ TODO. This step is probably the most difficult.
 
 `rake db:seed` to seed db with data defined in `seeds.rb`
 
+`rubocop` to lint files, `rubocop -a` to auto-fix violations
+
 
 ### Troubleshooting
 I had a ton of trouble installing Ruby on Rails on Mac OS X El Capitan. Seems related to the [System Integrity Protection](https://support.apple.com/en-us/HT204899) feature that was introduced with that version of the OS.
