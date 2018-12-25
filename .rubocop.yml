@@ -3091,7 +3091,7 @@ Style/EmptyLiteral:
 Style/EmptyMethod:
   Description: 'Checks the formatting of empty method definitions.'
   StyleGuide: '#no-single-line-methods'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.46'
   EnforcedStyle: compact
   SupportedStyles:
@@ -3646,7 +3646,7 @@ Style/NumericLiterals:
                  Add underscores to large numeric literals to improve their
                  readability.
   StyleGuide: '#underscores-in-numerics'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   VersionChanged: '0.48'
   MinDigits: 5
@@ -3992,7 +3992,7 @@ Style/StabbyLambdaParentheses:
 Style/StderrPuts:
   Description: 'Use `warn` instead of `$stderr.puts`.'
   StyleGuide: '#warn'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.51'
 
 Style/StringHashKeys:
@@ -4049,7 +4049,7 @@ Style/StructInheritance:
 Style/SymbolArray:
   Description: 'Use %i or %I for arrays of symbols.'
   StyleGuide: '#percent-i'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   VersionChanged: '0.49'
   EnforcedStyle: percent
