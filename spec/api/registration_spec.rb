@@ -11,7 +11,7 @@ describe 'User registration API: POST /users', type: :request do
   it 'returns user data on success' do
     post('/users', params: {
            user: user
-         }, headers: { 'ACCEPT' => 'application/json' })
+         })
 
     assert response.successful?
 
@@ -27,13 +27,13 @@ describe 'User registration API: POST /users', type: :request do
     one_user = user
     post('/users', params: {
            user: one_user
-         }, headers: { 'ACCEPT' => 'application/json' })
+         })
 
     assert response.successful?
 
     post('/users', params: {
            user: one_user
-         }, headers: { 'ACCEPT' => 'application/json' })
+         })
 
     expect(response.status).to eq(422)
 
@@ -44,7 +44,7 @@ describe 'User registration API: POST /users', type: :request do
   it 'requires a password with at least 8 digits', type: :request do
     post('/users', params: {
            user: user(Faker::Internet.email, Faker::String.random(7))
-         }, headers: { 'ACCEPT' => 'application/json' })
+         })
 
     expect(response.status).to eq(422)
     response_payload = JSON.parse(response.body, object_class: OpenStruct)
@@ -54,7 +54,7 @@ describe 'User registration API: POST /users', type: :request do
   it 'requires a valid email (default Devise email regex validation just requires an @ symbol to be present)' do
     post('/users', params: {
            user: user('invalidemail.com')
-         }, headers: { 'ACCEPT' => 'application/json' })
+         })
 
     expect(response.status).to eq(422)
     response_payload = JSON.parse(response.body, object_class: OpenStruct)

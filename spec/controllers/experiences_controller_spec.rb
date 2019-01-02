@@ -16,7 +16,7 @@ describe ExperiencesController, type: :request do
         sign_out :user
         post('/experiences', params: {
                experience: experience
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
         expect(response.status).to eq(401)
       end
@@ -28,7 +28,7 @@ describe ExperiencesController, type: :request do
                  company: '',
                  position: ''
                }
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
         expect(response.status).to eq(400)
         response_payload = JSON.parse(response.body, object_class: OpenStruct)
@@ -40,9 +40,9 @@ describe ExperiencesController, type: :request do
         sign_in Fixtures.test_user
         post('/experiences', params: {
                experience: experience
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
-        expect(response.status).to eq(200)
+        assert response.successful?
 
         response_payload = JSON.parse(response.body, object_class: OpenStruct)
 
@@ -58,7 +58,7 @@ describe ExperiencesController, type: :request do
         sign_out :user
         put('/experiences/123', params: {
                experience: experience
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
         expect(response.status).to eq(401)
       end
@@ -67,7 +67,7 @@ describe ExperiencesController, type: :request do
         sign_in Fixtures.test_user
         put("/experiences/#{Constants.NON_EXISTENT}", params: {
                experience: experience
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
         expect(response.status).to eq(404)
 
@@ -79,7 +79,7 @@ describe ExperiencesController, type: :request do
         sign_in Fixtures.test_user
         post('/experiences', params: {
                experience: experience
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
         created = JSON.parse(response.body, object_class: OpenStruct)
 
@@ -90,7 +90,7 @@ describe ExperiencesController, type: :request do
                  company: 'LinkedIn',
                  position: 'Software Engineer'
                }
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
         # user 2 should not have edit access to the resource created by user 1
         expect(response.status).to eq(404)
@@ -100,7 +100,7 @@ describe ExperiencesController, type: :request do
         sign_in Fixtures.test_user
         post('/experiences', params: {
                experience: experience
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
         created = JSON.parse(response.body, object_class: OpenStruct)
 
@@ -111,9 +111,10 @@ describe ExperiencesController, type: :request do
                  company: COMPANY,
                  position: POSITION
                }
-             }, headers: { 'ACCEPT' => 'application/json' })
+             })
 
-        expect(response.status).to eq(200)
+        assert response.successful?
+
         updated = JSON.parse(response.body, object_class: OpenStruct)
         expect(updated.company).to eq(COMPANY)
         expect(updated.position).to eq(POSITION)

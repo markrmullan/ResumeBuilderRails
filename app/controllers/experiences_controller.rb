@@ -1,4 +1,5 @@
 class ExperiencesController < ApplicationController
+  respond_to :json
   before_action :authenticate_user!
 
   def create
