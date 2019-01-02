@@ -3,8 +3,8 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table(:users, id: false) do |t|
-      t.integer :id, null: false, unique: true
-      t.string :uuid, limit: 36, primary_key: true, null: false
+      t.integer :id, null: false, primary_key: true
+      t.string :uuid, limit: 36, null: false
 
       ## Database authenticatable
       t.string :email,              null: false, default: ''
@@ -37,9 +37,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.timestamps null: false
     end
-    add_index :users, :id,                   unique: true
-    change_column :users, :id, :integer, null: false, unique: true, auto_increment: true
     add_index :users, :email,                unique: true
+    add_index :users, :uuid,                 unique: true
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true

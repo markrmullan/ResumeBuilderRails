@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   }
   # required for devise, or some undefined method errors will be thrown
   resources :users
+
+  resources :experiences, only: [:create]
   root to: 'home#index'
 end

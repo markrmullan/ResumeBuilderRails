@@ -2,7 +2,8 @@
 #
 # Table name: users
 #
-#  uuid                   :string(36)       not null, primary key
+#  id                     :integer          not null, primary key
+#  uuid                   :string(36)       not null
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
@@ -14,6 +15,8 @@
 
 class User < ApplicationRecord
   include ApplicationHelper::UUID
+
+  has_many :experiences
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

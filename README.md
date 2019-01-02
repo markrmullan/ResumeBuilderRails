@@ -36,6 +36,12 @@ See `Troubleshooting` section for more information. If there are issues during `
 ResumeBuilder (master) $ bundle install --path vendor/bundle
 ```
 
+Start the server
+
+```
+ResumeBuilder (master) $ rails s
+```
+
 #### Set up MySQL
 TODO. This step is probably the most difficult.
 
@@ -58,7 +64,7 @@ ResumeBuilder (master) $ rake db:migrate RAILS_ENV=test
 
 Seed the test db:
 ```
-rake db:seed RAILS_ENV=test
+ResumeBuilder (master) $ rake db:seed RAILS_ENV=test
 ```
 
 Finally, execute the tests:
