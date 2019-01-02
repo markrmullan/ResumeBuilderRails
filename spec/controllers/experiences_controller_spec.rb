@@ -52,5 +52,72 @@ describe ExperiencesController, type: :request do
         expect(response_payload.updated_at).to be_truthy
       end
     end
+
+    describe 'UPDATE' do
+      it 'requires authentication' do
+        sign_out :user
+        put('/experiences/123', params: {
+               experience: experience
+             }, headers: { 'ACCEPT' => 'application/json' })
+
+        expect(response.status).to eq(401)
+      end
+
+      it 'returns 404 when passed a uuid of an experience that does not exist' do
+        sign_in Fixtures.test_user
+        put("/experiences/#{Constants.NON_EXISTENT}", params: {
+               experience: experience
+             }, headers: { 'ACCEPT' => 'application/json' })
+
+        expect(response.status).to eq(404)
+
+        response_payload = JSON.parse(response.body, object_class: OpenStruct)
+        expect(response_payload.message).to eq("Couldn't find Experience #{Constants.NON_EXISTENT}")
+      end
+
+      it 'prevents against IDOR' do
+        sign_in Fixtures.test_user
+        post('/experiences', params: {
+               experience: experience
+             }, headers: { 'ACCEPT' => 'application/json' })
+
+        created = JSON.parse(response.body, object_class: OpenStruct)
+
+        sign_in Fixtures.test_user_2
+
+        put("/experiences/#{created.uuid}", params: {
+               experience: {
+                 company: 'LinkedIn',
+                 position: 'Software Engineer'
+               }
+             }, headers: { 'ACCEPT' => 'application/json' })
+
+        # user 2 should not have edit access to the resource created by user 1
+        expect(response.status).to eq(404)
+      end
+
+      it 'can update the `company` and `position` params' do
+        sign_in Fixtures.test_user
+        post('/experiences', params: {
+               experience: experience
+             }, headers: { 'ACCEPT' => 'application/json' })
+
+        created = JSON.parse(response.body, object_class: OpenStruct)
+
+        COMPANY = 'LinkedIn'
+        POSITION = 'Software Engineer'
+        put("/experiences/#{created.uuid}", params: {
+               experience: {
+                 company: COMPANY,
+                 position: POSITION
+               }
+             }, headers: { 'ACCEPT' => 'application/json' })
+
+        expect(response.status).to eq(200)
+        updated = JSON.parse(response.body, object_class: OpenStruct)
+        expect(updated.company).to eq(COMPANY)
+        expect(updated.position).to eq(POSITION)
+      end
+    end
   end
 end

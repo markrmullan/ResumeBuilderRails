@@ -10,5 +10,9 @@ User.create([
               {
                 email: 'user1@gmail.com',
                 password: 'password123'
+              },
+              {
+                email: 'user2@gmail.com',
+                password: 'secondUser!'
               }
             ])
