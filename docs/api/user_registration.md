@@ -30,7 +30,7 @@ Response: (status code 422)
 {
     "errors": {
         "email": [
-            "has already been taken"
+            "User has already been taken"
         ],
         "password": [
             "can't be blank"

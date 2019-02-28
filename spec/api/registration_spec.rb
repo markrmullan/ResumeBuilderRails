@@ -38,7 +38,7 @@ describe 'User registration API: POST /users', type: :request do
     expect(response.status).to eq(422)
 
     response_payload = JSON.parse(response.body, object_class: OpenStruct)
-    expect(response_payload.errors.email).to include('has already been taken')
+    expect(response_payload.errors.email.first).to eq('User has already been taken')
   end
 
   it 'requires a password with at least 8 digits', type: :request do
