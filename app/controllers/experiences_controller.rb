@@ -3,7 +3,7 @@ class ExperiencesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    return render :json => Experience.where(user_id: current_user.id)
+    render json: Experience.where(user_id: current_user.id)
   end
 
   def create
@@ -11,31 +11,31 @@ class ExperiencesController < ApplicationController
     @experience.user = current_user
 
     if @experience.save
-      return render :json => @experience
+      return render json: @experience
     else
-      return render :json => @experience.errors, status: :bad_request
+      return render json: @experience.errors, status: :bad_request
     end
   end
 
   def update
-    @experience = Experience.find_by!({
+    @experience = Experience.find_by!(
       uuid: params['id'],
       user_id: current_user.id
-    })
+    )
 
     @experience.assign_attributes(experience_params)
 
     if @experience.save
-      return render :json => @experience
+      return render json: @experience
     else
-      return render :json => @experience.errors, status: :bad_request
+      return render json: @experience.errors, status: :bad_request
     end
-
   rescue ActiveRecord::RecordNotFound => e
-    return render json: { message: "#{e.message} #{params['id']}" }, status: :not_found
+    render json: { message: "#{e.message} #{params['id']}" }, status: :not_found
   end
 
   private
+
   def experience_params
     params
       .require(:experience)

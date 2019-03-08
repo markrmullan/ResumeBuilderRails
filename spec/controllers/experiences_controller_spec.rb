@@ -57,8 +57,8 @@ describe ExperiencesController, type: :request do
       it 'requires authentication' do
         sign_out :user
         put('/experiences/123', params: {
-               experience: experience
-             })
+              experience: experience
+            })
 
         expect(response.status).to eq(401)
       end
@@ -66,8 +66,8 @@ describe ExperiencesController, type: :request do
       it 'returns 404 when passed a uuid of an experience that does not exist' do
         sign_in Fixtures.test_user
         put("/experiences/#{Constants.NON_EXISTENT}", params: {
-               experience: experience
-             })
+              experience: experience
+            })
 
         expect(response.status).to eq(404)
 
@@ -86,11 +86,11 @@ describe ExperiencesController, type: :request do
         sign_in Fixtures.test_user_2
 
         put("/experiences/#{created.uuid}", params: {
-               experience: {
-                 company: 'LinkedIn',
-                 position: 'Software Engineer'
-               }
-             })
+              experience: {
+                company: 'LinkedIn',
+                position: 'Software Engineer'
+              }
+            })
 
         # user 2 should not have edit access to the resource created by user 1
         expect(response.status).to eq(404)
@@ -104,14 +104,14 @@ describe ExperiencesController, type: :request do
 
         created = JSON.parse(response.body, object_class: OpenStruct)
 
-        COMPANY = 'LinkedIn'
-        POSITION = 'Software Engineer'
+        COMPANY = 'LinkedIn'.freeze
+        POSITION = 'Software Engineer'.freeze
         put("/experiences/#{created.uuid}", params: {
-               experience: {
-                 company: COMPANY,
-                 position: POSITION
-               }
-             })
+              experience: {
+                company: COMPANY,
+                position: POSITION
+              }
+            })
 
         assert response.successful?
 
