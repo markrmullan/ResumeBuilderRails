@@ -2,6 +2,10 @@ class ExperiencesController < ApplicationController
   respond_to :json
   before_action :authenticate_user!
 
+  def index
+    return render :json => Experience.where(user_id: current_user.id)
+  end
+
   def create
     @experience = Experience.new(experience_params)
     @experience.user = current_user

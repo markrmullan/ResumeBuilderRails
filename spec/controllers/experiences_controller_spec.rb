@@ -121,4 +121,23 @@ describe ExperiencesController, type: :request do
       end
     end
   end
+
+  describe 'GET operations' do
+    describe 'GET /experiences' do
+      it 'returns a list of experiences that belong to the logged in user' do
+        sign_in Fixtures.test_user
+        post('/experiences', params: {
+               experience: experience
+             })
+
+        created = JSON.parse(response.body, object_class: OpenStruct)
+
+        get('/experiences')
+
+        assert response.successful?
+        fetched = JSON.parse(response.body, object_class: OpenStruct)
+        expect(fetched.length).to eq(1)
+      end
+    end
+  end
 end
