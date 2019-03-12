@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :users
 
   resources :experiences, only: [:index, :create, :update], defaults: { format: :json }
+  resources :cvs, only: [:index, :create, :update], defaults: { format: :json }
   root to: 'home#index'
 end

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_094016) do
+ActiveRecord::Schema.define(version: 2019_03_12_175018) do
+
+  create_table "cvs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "uuid", limit: 36, null: false
+    t.integer "user_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_rails_f91a03fbe4"
+    t.index ["uuid"], name: "index_cvs_on_uuid", unique: true
+  end
 
   create_table "experiences", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
@@ -39,5 +49,6 @@ ActiveRecord::Schema.define(version: 2018_12_25_094016) do
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 
+  add_foreign_key "cvs", "users"
   add_foreign_key "experiences", "users"
 end
