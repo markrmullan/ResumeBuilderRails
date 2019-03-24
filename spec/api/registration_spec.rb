@@ -1,8 +1,13 @@
 require 'rails_helper'
 
+$first_name = "John"
+$last_name = "Doe"
+
 def user(email = Faker::Internet.email, password = Faker::String.random(9))
   {
     email: email,
+    first_name: $first_name,
+    last_name: $last_name,
     password: password
   }
 end
@@ -19,6 +24,8 @@ describe 'User registration API: POST /users', type: :request do
 
     expect(response_payload.uuid).to be_truthy
     expect(response_payload.email).to be_truthy
+    expect(response_payload.first_name).to eq($first_name)
+    expect(response_payload.last_name).to eq($last_name)
     expect(response_payload.created_at).to be_truthy
     expect(response_payload.updated_at).to be_truthy
   end
