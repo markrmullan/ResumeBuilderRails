@@ -6,10 +6,10 @@ $last_name = "Doe"
 def user(email = Faker::Internet.email, password = Faker::String.random(9), phone_number=Faker::PhoneNumber.cell_phone)
   {
     email: email,
-    firstName: $first_name,
-    lastName: $last_name,
+    first_name: $first_name,
+    last_name: $last_name,
     password: password,
-    phoneNumber: phone_number
+    phone_number: phone_number
   }
 end
 
