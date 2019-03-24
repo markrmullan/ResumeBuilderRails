@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_181050) do
+ActiveRecord::Schema.define(version: 2019_03_24_213041) do
 
   create_table "cvs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_181050) do
     t.string "uuid", limit: 36, null: false
     t.string "first_name", limit: 127
     t.string "last_name", limit: 127
+    t.string "phone_number", limit: 127
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

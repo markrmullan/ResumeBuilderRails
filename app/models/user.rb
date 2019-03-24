@@ -17,7 +17,7 @@
 
 class User < ApplicationRecord
   before_save :underscore
-  attr_accessor :firstName, :lastName
+  attr_accessor :firstName, :lastName, :phoneNumber
 
   include ApplicationHelper::UUID
 
@@ -32,5 +32,6 @@ class User < ApplicationRecord
   def underscore
     self.first_name = firstName
     self.last_name = lastName
+    self.phone_number = phoneNumber
   end
 end
