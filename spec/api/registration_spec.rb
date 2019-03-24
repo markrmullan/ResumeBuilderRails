@@ -6,8 +6,8 @@ $last_name = "Doe"
 def user(email = Faker::Internet.email, password = Faker::String.random(9))
   {
     email: email,
-    first_name: $first_name,
-    last_name: $last_name,
+    firstName: $first_name,
+    lastName: $last_name,
     password: password
   }
 end
@@ -24,10 +24,10 @@ describe 'User registration API: POST /users', type: :request do
 
     expect(response_payload.uuid).to be_truthy
     expect(response_payload.email).to be_truthy
-    expect(response_payload.first_name).to eq($first_name)
-    expect(response_payload.last_name).to eq($last_name)
-    expect(response_payload.created_at).to be_truthy
-    expect(response_payload.updated_at).to be_truthy
+    expect(response_payload.firstName).to eq($first_name)
+    expect(response_payload.lastName).to eq($last_name)
+    expect(response_payload.createdAt).to be_truthy
+    expect(response_payload.updatedAt).to be_truthy
   end
 
   it 'does not allow a user to signup twice', type: :request do

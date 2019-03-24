@@ -16,6 +16,9 @@
 #
 
 class User < ApplicationRecord
+  before_save :underscore
+  attr_accessor :firstName, :lastName
+
   include ApplicationHelper::UUID
 
   has_many :experiences
@@ -24,4 +27,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  private
+  def underscore
+    self.first_name = firstName
+    self.last_name = lastName
+  end
 end

@@ -22,8 +22,8 @@ RSpec.describe CvsController, type: :request do
         payload = JSON.parse(response.body, object_class: OpenStruct)
 
         expect(payload.uuid).to be_truthy
-        expect(payload.created_at).to be_truthy
-        expect(payload.updated_at).to be_truthy
+        expect(payload.createdAt).to be_truthy
+        expect(payload.updatedAt).to be_truthy
       end
     end
 

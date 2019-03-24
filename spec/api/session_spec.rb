@@ -22,8 +22,8 @@ describe 'Session APIs', type: :request do
       response_payload = JSON.parse(response.body, object_class: OpenStruct)
       expect(response_payload.uuid).to be_truthy
       expect(response_payload.email).to be_truthy
-      expect(response_payload.created_at).to be_truthy
-      expect(response_payload.updated_at).to be_truthy
+      expect(response_payload.createdAt).to be_truthy
+      expect(response_payload.updatedAt).to be_truthy
     end
   end
 

@@ -48,8 +48,8 @@ describe ExperiencesController, type: :request do
 
         expect(response_payload.company).to be_truthy
         expect(response_payload.position).to be_truthy
-        expect(response_payload.created_at).to be_truthy
-        expect(response_payload.updated_at).to be_truthy
+        expect(response_payload.createdAt).to be_truthy
+        expect(response_payload.updatedAt).to be_truthy
       end
     end
 
