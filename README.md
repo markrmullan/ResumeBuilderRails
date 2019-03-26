@@ -36,10 +36,16 @@ See `Troubleshooting` section for more information. If there are issues during `
 ResumeBuilder (master) $ bundle install --path vendor/bundle
 ```
 
-Start the server
+#### Start the server
 
 ```
 ResumeBuilder (master) $ rails s
+```
+
+Rails by default will run on port 3000. In order to override the default port,
+
+```
+ResumeBuilder (master) $ rails s -p 3001
 ```
 
 #### Set up MySQL
