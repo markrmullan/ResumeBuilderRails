@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_03_24_213041) do
 
-  create_table "cvs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "uuid", limit: 36, null: false
-    t.integer "user_id", null: false
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "fk_rails_f91a03fbe4"
-    t.index ["uuid"], name: "index_cvs_on_uuid", unique: true
-  end
-
   create_table "experiences", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.integer "user_id", null: false
@@ -33,6 +23,16 @@ ActiveRecord::Schema.define(version: 2019_03_24_213041) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "fk_rails_2d0e25b521"
     t.index ["uuid"], name: "index_experiences_on_uuid", unique: true
+  end
+
+  create_table "resumes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "uuid", limit: 36, null: false
+    t.integer "user_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_rails_867611551d"
+    t.index ["uuid"], name: "index_resumes_on_uuid", unique: true
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,6 +52,6 @@ ActiveRecord::Schema.define(version: 2019_03_24_213041) do
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 
-  add_foreign_key "cvs", "users"
   add_foreign_key "experiences", "users"
+  add_foreign_key "resumes", "users"
 end

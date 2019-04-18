@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: cvs
+# Table name: resumes
 #
 #  id         :integer          not null, primary key
 #  uuid       :string(36)       not null
@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class Cv < ApplicationRecord
+class Resume < ApplicationRecord
   include ApplicationHelper::UUID
 
   belongs_to :user

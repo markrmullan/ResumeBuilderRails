@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-$first_name = "John"
-$last_name = "Doe"
+$first_name = 'John'
+$last_name = 'Doe'
 
-def user(email = Faker::Internet.email, password = Faker::String.random(9), phone_number=Faker::PhoneNumber.cell_phone)
+def user(email = Faker::Internet.email, password = Faker::String.random(9), phone_number = Faker::PhoneNumber.cell_phone)
   {
     email: email,
     first_name: $first_name,

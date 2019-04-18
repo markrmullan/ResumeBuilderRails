@@ -1,6 +1,6 @@
-class CreateCvs < ActiveRecord::Migration[5.2]
+class CreateResumes < ActiveRecord::Migration[5.2]
   def change
-    create_table :cvs, id: false do |t|
+    create_table :resumes, id: false do |t|
       t.integer :id, null: false, primary_key: true
       t.string :uuid, limit: 36, null: false
       t.integer :user_id, null: false
@@ -10,7 +10,7 @@ class CreateCvs < ActiveRecord::Migration[5.2]
       t.timestamps null: false
     end
 
-    add_index :cvs, :uuid, unique: true
-    add_foreign_key :cvs, :users
+    add_index :resumes, :uuid, unique: true
+    add_foreign_key :resumes, :users
   end
 end
