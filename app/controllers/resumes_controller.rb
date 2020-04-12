@@ -18,10 +18,12 @@ class ResumesController < ApiController
   end
 
   def show
-    @resume = Resume.find_by!(
-      uuid: params['id'],
-      user_id: current_user.id
-    )
+    @resume = Resume
+      .includes(:experiences)
+      .find_by!(
+        uuid: params['id'],
+        user_id: current_user.id
+      )
 
     render json: @resume
   end

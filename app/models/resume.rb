@@ -14,9 +14,17 @@ class Resume < ApplicationRecord
   include ApplicationHelper::UUID
 
   belongs_to :user
+  has_many :experiences
   validates_presence_of :name
 
   def as_json(options = {})
-    super(except: [:id, :user_id])
+    super({
+      except: [:id, :user_id],
+      include: {
+        experiences: {
+          except: [:id, :resume_id]
+        }
+      }
+    })
   end
 end
