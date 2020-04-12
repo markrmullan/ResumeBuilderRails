@@ -3,15 +3,15 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  uuid                   :string(36)       not null
+#  email                  :string(255)      default(""), not null, indexed
+#  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(127)
 #  last_name              :string(127)
 #  phone_number           :string(127)
-#  email                  :string(255)      default(""), not null
-#  encrypted_password     :string(255)      default(""), not null
-#  reset_password_token   :string(255)
-#  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  reset_password_sent_at :datetime
+#  reset_password_token   :string(255)      indexed
+#  uuid                   :string(36)       not null, indexed
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

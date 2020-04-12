@@ -3,11 +3,11 @@
 # Table name: resumes
 #
 #  id         :integer          not null, primary key
-#  uuid       :string(36)       not null
-#  user_id    :integer          not null
 #  name       :string(255)
+#  uuid       :string(36)       not null, indexed
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer          not null, indexed
 #
 
 class Resume < ApplicationRecord

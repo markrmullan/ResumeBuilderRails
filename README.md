@@ -55,6 +55,8 @@ TODO. This step is probably the most difficult.
 
 `rake db:migrate` to run migrations
 
+`bundle exec rake annotate_models` to annotate model files after a migration, if necessary
+
 `rake db:seed` to seed db with data defined in `seeds.rb`
 
 `rubocop` to lint files, `rubocop -a` to auto-fix violations

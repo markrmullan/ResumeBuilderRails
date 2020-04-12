@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_213041) do
+ActiveRecord::Schema.define(version: 2020_04_12_190637) do
 
   create_table "experiences", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
-    t.integer "user_id", null: false
     t.string "company"
     t.string "position"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "fk_rails_2d0e25b521"
+    t.string "city", limit: 127
+    t.integer "resume_id", null: false
+    t.string "description", limit: 5000
+    t.index ["resume_id"], name: "fk_rails_b062765ade"
     t.index ["uuid"], name: "index_experiences_on_uuid", unique: true
   end
 
@@ -52,6 +54,6 @@ ActiveRecord::Schema.define(version: 2019_03_24_213041) do
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 
-  add_foreign_key "experiences", "users"
+  add_foreign_key "experiences", "resumes"
   add_foreign_key "resumes", "users"
 end
