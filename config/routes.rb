@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :users
   get '/users/current', to: 'users#show'
 
-  resources :experiences, only: [:index, :create, :update], defaults: { format: :json }
-  resources :resumes, only: [:index, :show, :create, :update], defaults: { format: :json }
+  resources :resumes, only: [:index, :show, :create, :update], defaults: { format: :json } do
+    resources :experiences, only: [:index, :create, :update, :destroy], defaults: { format: :json }
+  end
   root to: 'home#index'
 end

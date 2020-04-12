@@ -21,21 +21,6 @@ describe ExperiencesController, type: :request do
         expect(response.status).to eq(401)
       end
 
-      it 'returns 400 when required parameters are missing' do
-        sign_in Fixtures.test_user
-        post('/experiences', params: {
-               experience: {
-                 company: '',
-                 position: ''
-               }
-             })
-
-        expect(response.status).to eq(400)
-        response_payload = JSON.parse(response.body, object_class: OpenStruct)
-        expect(response_payload.company).to include(Constants.CANT_BE_BLANK)
-        expect(response_payload.position).to include(Constants.CANT_BE_BLANK)
-      end
-
       it 'can create an experience from POST /experiences' do
         sign_in Fixtures.test_user
         post('/experiences', params: {

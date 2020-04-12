@@ -18,6 +18,9 @@
 class Experience < ApplicationRecord
   include ApplicationHelper::UUID
 
-  belongs_to :user
-  validates_presence_of :company, :position
+  belongs_to :resume
+
+  def as_json(options = {})
+    super(except: [:id, :resume_id])
+  end
 end
