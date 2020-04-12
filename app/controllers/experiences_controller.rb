@@ -1,4 +1,4 @@
-class ExperiencesController < ApplicationController
+class ExperiencesController < ApiController
   respond_to :json
   before_action :authenticate_user!
 
@@ -30,8 +30,6 @@ class ExperiencesController < ApplicationController
     else
       return render json: @experience.errors, status: :bad_request
     end
-  rescue ActiveRecord::RecordNotFound => e
-    render json: { message: "#{e.message} #{params['id']}" }, status: :not_found
   end
 
   private

@@ -1,4 +1,4 @@
-class ResumesController < ApplicationController
+class ResumesController < ApiController
   respond_to :json
   before_action :authenticate_user!
 
@@ -17,6 +17,15 @@ class ResumesController < ApplicationController
     end
   end
 
+  def show
+    @resume = Resume.find_by!(
+      uuid: params['id'],
+      user_id: current_user.id
+    )
+
+    render json: @resume
+  end
+
   def update
     @resume = Resume.find_by!(
       uuid: params['id'],
@@ -30,8 +39,6 @@ class ResumesController < ApplicationController
     else
       return render json: @resume.errors, status: :bad_request
     end
-  rescue ActiveRecord::RecordNotFound => e
-    render json: { message: "#{e.message} #{params['id']}" }, status: :not_found
   end
 
   private
