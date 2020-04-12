@@ -15,4 +15,8 @@ class Resume < ApplicationRecord
 
   belongs_to :user
   validates_presence_of :name
+
+  def as_json(options = {})
+    super(except: [:id, :user_id])
+  end
 end
