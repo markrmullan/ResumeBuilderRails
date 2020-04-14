@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     sessions: 'sessions'
   }, defaults: { format: :json }
   # required for devise, or some undefined method errors will be thrown
-  resources :users
+  resources :users, defaults: { format: :json }
   get '/users/current', to: 'users#show'
 
   resources :resumes, only: [:index, :show, :create, :update], defaults: { format: :json } do
