@@ -7,7 +7,7 @@
 #  uuid       :string(36)       not null, indexed
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer          not null, indexed
+#  user_id    :integer          not null
 #
 
 class Resume < ApplicationRecord

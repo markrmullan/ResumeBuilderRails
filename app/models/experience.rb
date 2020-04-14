@@ -12,7 +12,7 @@
 #  uuid        :string(36)       not null, indexed
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  resume_id   :integer          not null, indexed
+#  resume_id   :integer          not null
 #
 
 class Experience < ApplicationRecord
