@@ -18,7 +18,7 @@
 class Experience < ApplicationRecord
   include ApplicationHelper::UUID
 
-  belongs_to :resume
+  belongs_to :resume, touch: true
 
   def as_json(options = {})
     super(except: [:id, :resume_id])
