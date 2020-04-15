@@ -45,6 +45,15 @@ class ResumesController < ApiController
     end
   end
 
+  def destroy
+    @resume = Resume.find_by!(
+      uuid: params['id'],
+      user_id: current_user.id
+    )
+
+    @resume.destroy
+  end
+
   private
 
   def resume_params
