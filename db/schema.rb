@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_190637) do
+ActiveRecord::Schema.define(version: 2020_04_15_064538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "educations", id: :serial, force: :cascade do |t|
+    t.string "uuid", limit: 36, null: false
+    t.integer "resume_id", null: false
+    t.string "school", limit: 255
+    t.string "degree", limit: 255
+    t.string "description", limit: 5000
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uuid"], name: "index_educations_on_uuid", unique: true
+  end
 
   create_table "experiences", id: :serial, force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
@@ -55,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_190637) do
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 
+  add_foreign_key "educations", "resumes"
   add_foreign_key "experiences", "resumes"
   add_foreign_key "resumes", "users"
 end

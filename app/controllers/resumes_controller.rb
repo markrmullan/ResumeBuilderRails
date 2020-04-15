@@ -21,7 +21,7 @@ class ResumesController < ApiController
 
   def show
     @resume = Resume
-      .includes(:experiences)
+      .includes(:experiences, :educations)
       .find_by!(
         uuid: params['id'],
         user_id: current_user.id

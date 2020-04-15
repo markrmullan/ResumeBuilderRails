@@ -15,6 +15,7 @@ class Resume < ApplicationRecord
 
   belongs_to :user
   has_many :experiences, dependent: :destroy
+  has_many :educations, dependent: :destroy
   validates_presence_of :name
 
   def as_json(options = {})
@@ -22,6 +23,9 @@ class Resume < ApplicationRecord
       except: [:id, :user_id],
       include: {
         experiences: {
+          except: [:id, :resume_id]
+        },
+        educations: {
           except: [:id, :resume_id]
         }
       }
