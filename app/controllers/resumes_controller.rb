@@ -47,7 +47,6 @@ class ResumesController < ApiController
 
   def resume_params
     params
-      .require(:resume)
       .permit(:name)
   end
 end
