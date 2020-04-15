@@ -3,7 +3,9 @@ class ResumesController < ApiController
   before_action :authenticate_user!
 
   def index
-    render json: Resume.where(user_id: current_user.id)
+    render json: Resume
+      .order(updated_at: :desc)
+      .where(user_id: current_user.id)
   end
 
   def create
