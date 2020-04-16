@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_064538) do
+ActiveRecord::Schema.define(version: 2020_04_16_021610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_064538) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location", limit: 127
     t.index ["uuid"], name: "index_educations_on_uuid", unique: true
   end
 
@@ -36,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_064538) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city", limit: 127
+    t.string "location", limit: 127
     t.integer "resume_id", null: false
     t.string "description", limit: 5000
     t.index ["uuid"], name: "index_experiences_on_uuid", unique: true

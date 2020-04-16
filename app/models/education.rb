@@ -6,6 +6,7 @@
 #  degree      :string(255)
 #  description :string(5000)
 #  end_date    :datetime
+#  location    :string(127)
 #  school      :string(255)
 #  start_date  :datetime
 #  uuid        :string(36)       not null, indexed

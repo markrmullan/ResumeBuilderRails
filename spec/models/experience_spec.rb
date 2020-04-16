@@ -3,10 +3,10 @@
 # Table name: experiences
 #
 #  id          :integer          not null, primary key
-#  city        :string(127)
 #  company     :string(255)
 #  description :string(5000)
 #  end_date    :datetime
+#  location    :string(127)
 #  position    :string(255)
 #  start_date  :datetime
 #  uuid        :string(36)       not null, indexed
