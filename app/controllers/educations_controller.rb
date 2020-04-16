@@ -67,6 +67,6 @@ class EducationsController < ApiController
 
   def education_params
     params
-      .permit(:school, :degree, :description, :start_date, :end_date)
+      .permit(:school, :degree, :location, :description, :start_date, :end_date)
   end
 end

@@ -67,6 +67,6 @@ class ExperiencesController < ApiController
 
   def experience_params
     params
-      .permit(:company, :position, :description, :start_date, :end_date)
+      .permit(:company, :position, :location, :description, :start_date, :end_date)
   end
 end
