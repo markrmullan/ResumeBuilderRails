@@ -14,8 +14,8 @@ class Resume < ApplicationRecord
   include ApplicationHelper::UUID
 
   belongs_to :user
-  has_many :experiences, dependent: :destroy
-  has_many :educations, dependent: :destroy
+  has_many :experiences, -> { order(created_at: :asc) }, dependent: :destroy
+  has_many :educations, -> { order(created_at: :asc) }, dependent: :destroy
   validates_presence_of :name
 
   def as_json(options = {})
