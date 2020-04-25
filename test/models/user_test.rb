@@ -11,6 +11,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string           indexed
+#  resume_email           :string(255)
 #  uuid                   :string(36)       not null, indexed
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
