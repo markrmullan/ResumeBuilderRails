@@ -20,6 +20,9 @@ class EducationsController < ApiController
     })
 
     @education = Education.new(education_params)
+    now = Time.now
+    @education.start_date = now
+    @education.end_date = now
     @education.resume = @resume
 
     if @education.save

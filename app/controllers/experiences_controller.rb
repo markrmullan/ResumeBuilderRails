@@ -20,6 +20,10 @@ class ExperiencesController < ApiController
     })
 
     @experience = Experience.new(experience_params)
+
+    now = Time.now
+    @experience.start_date = now
+    @experience.end_date = now
     @experience.resume = @resume
 
     if @experience.save
