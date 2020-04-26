@@ -17,6 +17,6 @@ class UsersController < ApiController
 
   def user_params
     params
-      .permit(:phone_number, :first_name, :last_name, :resume_email)
+      .permit(:phone_number, :first_name, :last_name, :resume_email, :city, :state, :zip, :job_title)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_172630) do
+ActiveRecord::Schema.define(version: 2020_04_26_042341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,10 @@ ActiveRecord::Schema.define(version: 2020_04_25_172630) do
     t.string "last_name", limit: 127
     t.string "phone_number", limit: 127
     t.string "resume_email", limit: 255
+    t.string "city", limit: 127
+    t.string "state", limit: 127
+    t.string "zip", limit: 127
+    t.string "job_title", limit: 127
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
