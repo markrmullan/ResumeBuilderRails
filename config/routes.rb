@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :resumes, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json } do
     resources :experiences, only: [:index, :create, :update, :destroy], defaults: { format: :json }
     resources :educations, only: [:index, :create, :update, :destroy], defaults: { format: :json }
+    resources :links, only: [:create, :update, :destroy], defaults: { format: :json }
   end
   root to: 'home#index'
 end

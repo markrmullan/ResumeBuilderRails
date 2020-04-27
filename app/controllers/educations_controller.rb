@@ -1,5 +1,4 @@
 class EducationsController < ApiController
-  respond_to :json
   before_action :authenticate_user!
 
   def index
