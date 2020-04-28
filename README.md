@@ -93,6 +93,10 @@ Connect to the db:
 $ heroku pg:psql -a resume-builder-server
 ```
 
+Tail server logs
+```
+$ heroku logs -t -a resume-builder-server
+```
 
 ### Troubleshooting
 I had a ton of trouble installing Ruby on Rails on Mac OS X El Capitan. Seems related to the [System Integrity Protection](https://support.apple.com/en-us/HT204899) feature that was introduced with that version of the OS.
