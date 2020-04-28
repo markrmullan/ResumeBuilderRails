@@ -10,14 +10,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'https://resume-builder-ts.herokuapp.com'
-    resource '*',
-             headers: :any,
-             methods: %i[get post put patch delete options head],
-             credentials: true
-  end
-
-  allow do
     origins 'http://www.easy-resu.me'
     resource '*',
              headers: :any,
