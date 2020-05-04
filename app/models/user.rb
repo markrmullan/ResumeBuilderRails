@@ -33,6 +33,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
    def as_json(options = {})
-     super(except: [:id, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at])
+     super(except: [:id, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :is_admin])
    end
 end

@@ -19,6 +19,7 @@ class UsersController < ApiController
   ### GOD MODE BECOME ANY USER BY USER ID, ONLY WORKS FROM mark@easy-resu.me
   ###
   ### fetch('http://localhost:3001/users/dab5a0c5-d96b-42e3-a01f-0d8bd3a09c1e/become', { method: 'POST', credentials: 'include'})
+  ### fetch('https://api.easy-resu.me/users/57814c85-eb7e-4b4c-9974-c3c5a0088d28/become', { method: 'POST', credentials: 'include'})
   ###
   def become
     return unless current_user.is_admin?
