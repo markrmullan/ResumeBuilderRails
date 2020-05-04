@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # required for devise, or some undefined method errors will be thrown
   resources :users, defaults: { format: :json }
   get '/users/current', to: 'users#show'
+  post '/users/:id/become', to: 'users#become'
 
   resources :resumes, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json } do
     resources :experiences, only: [:index, :create, :update, :destroy], defaults: { format: :json }

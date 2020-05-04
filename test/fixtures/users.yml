@@ -7,6 +7,7 @@
 #  email                  :string           default(""), not null, indexed
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string(127)
+#  is_admin               :boolean          default(FALSE), not null
 #  job_title              :string(127)
 #  last_name              :string(127)
 #  phone_number           :string(127)
