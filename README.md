@@ -48,7 +48,7 @@ Rails by default will run on port 3000. In order to override the default port,
 ResumeBuilder (master) $ rails s -p 3001
 ```
 
-#### Set up MySQL
+#### Set up Postgres
 TODO. This step is probably the most difficult.
 
 `rake db:create` to create databases
