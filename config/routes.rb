@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     resources :educations, only: [:index, :create, :update, :destroy], defaults: { format: :json }
     resources :links, only: [:create, :update, :destroy], defaults: { format: :json }
   end
+
+  resources :feature_flags, only: [:show]
+
   root to: 'home#index'
 end
