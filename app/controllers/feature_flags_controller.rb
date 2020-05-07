@@ -8,6 +8,7 @@ class FeatureFlagsController < ApplicationController
         :name => name,
         :enabled => false
       })
+    end
 
     render json: @feature_flag
   end
