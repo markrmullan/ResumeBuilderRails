@@ -1,4 +1,12 @@
 class UsersController < ApiController
+  before_action :authenticate_user!, except: :show
+
+  def index
+    return unauthorized unless current_user.is_admin?
+
+    render json: User.all
+  end
+
   def show
     render json: current_user
   end

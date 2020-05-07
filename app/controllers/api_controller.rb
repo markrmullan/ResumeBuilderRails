@@ -14,4 +14,14 @@ class ApiController < ApplicationController
       }
     }, status: :bad_request
   end
+
+  def unauthorized
+    render json: {
+      error: {
+        message: "Unauthorized",
+        code: "UNAUTHORIZED",
+        status: 401
+      }
+    }, status: :unauthorized
+  end
 end
