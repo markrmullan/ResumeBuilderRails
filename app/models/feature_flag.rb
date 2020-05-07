@@ -9,4 +9,7 @@
 #  updated_at :datetime         not null
 #
 class FeatureFlag < ApplicationRecord
+  def as_json(options = {})
+    super(only: [:name, :enabled])
+  end
 end
