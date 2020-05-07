@@ -31,8 +31,11 @@ class UsersController < ApiController
   ###
   def become
     return unless current_user.is_admin?
-    sign_in(User.find_by!(uuid: params[:id]))
-    redirect_to root_url
+
+    user = User.find_by!(uuid: params[:id])
+    sign_in(user)
+
+    render json: user
   end
 
   def user_params
