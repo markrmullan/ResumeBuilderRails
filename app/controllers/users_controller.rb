@@ -4,7 +4,9 @@ class UsersController < ApiController
   def index
     return unauthorized unless current_user.is_admin?
 
-    render json: User.all
+    render json: User
+      .all
+      .order(id: :desc)
   end
 
   def show
