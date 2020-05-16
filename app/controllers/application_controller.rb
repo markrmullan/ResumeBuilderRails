@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  protect_from_forgery with: :exception
+  protect_from_forgery unless: -> { request.format.json? }
 
   # originally for Devise, but we want to allow all APIs to respond to, and only to, application/json requests
   clear_respond_to
