@@ -65,6 +65,8 @@ Rails.application.configure do
     password: ENV['GMAIL_PASSWORD']
   }
 
+  config.action_mailer.default_url_options = { host: 'https://easy-resu.me' }
+
   config.action_mailer.default_options = {
     from: 'Easy Resume'
   }
